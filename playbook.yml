@@ -15,4 +15,6 @@
         - danizen
       minecraft_whitelist:
         - danizen
+        - ScorpionBuild
+        - PlacHerobrine
       minecraft_server: spigot
