@@ -10,7 +10,7 @@
         - java-1.8.0-openjdk
 
     - role: devops-coop.minecraft
-      minecraft_version: 1.12.1
+      minecraft_version: 1.12.2
       minecraft_ops:
         - danizen
       minecraft_whitelist:
