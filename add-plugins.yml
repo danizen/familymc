@@ -1,4 +1,27 @@
 # This file contains tasks to run after minecraft is installed
 ---
-- name: copy jars to lib directory
-  copy: 
+- name: Create directory for bukkit plugins
+  file:
+    path: /srv/minecraft/plugins
+    state: directory
+- name: 'Download WorldEdit 6.1.7.3'
+  get_url:
+    url: https://dev.bukkit.org/projects/worldedit/files/2460562/download
+    dest: /srv/minecraft/plugins/worldedit-6.1.7.3.jar
+- name: 'Download DynMap 2.5'
+  get_url:
+    url: https://dev.bukkit.org/projects/dynmap/files/2431572/download
+    dest: /srv/minecraft/plugins/dynmap-2.5.jar
+- name: 'Download Grief Prevention'
+  get_url:
+    url: https://dev.bukkit.org/projects/grief-prevention/files/2513026/download
+    dest: /srv/minecraft/plugins/GriefPrevention-16.8.jar
+- name: 'Download LaggRemover'
+  get_url:
+    url: https://dev.bukkit.org/projects/laggremover/files/2521425/download
+    dest: /srv/minecraft/plugins/LaggRemover-2.0.4.jar
+- name: 'Download EssentialsX'
+  get_url:
+    url: https://dev.bukkit.org/projects/essentialsx/files/2437748/download
+    dest: /srv/minecraft/plugins/EssentialsX-2.0.1-b488.jar
+

@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 script = <<EOF
-yum -y install ansible git
+yum -y install ansible git vim unzip
 ansible-galaxy install -r /vagrant/requirements.yml
 echo "[default]\nlocalhost" > /etc/ansible/hosts
 EOF
