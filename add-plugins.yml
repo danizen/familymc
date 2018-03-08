@@ -1,0 +1,4 @@
+# This file contains tasks to run after minecraft is installed
+---
+- name: copy jars to lib directory
+  copy: 

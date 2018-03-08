@@ -3,6 +3,32 @@
   connection: local
   become: true
 
+  pre_tasks:
+    - name: Create directory for bukkit plugins
+      file:
+        path: /usr/local/bukkit-plugins
+        state: directory
+    - name: 'Download WorldEdit 6.1.7.3'
+      get_url:
+        url: https://dev.bukkit.org/projects/worldedit/files/2460562/download
+        dest: /usr/local/bukkit-plugins/worldedit-6.1.7.3.jar
+    - name: 'Download DynMap 2.5'
+      get_url:
+        url: https://dev.bukkit.org/projects/dynmap/files/2431572/download
+        dest: /usr/local/bukkit-plugins/dynmap-2.5.jar
+    - name: 'Download Grief Prevention'
+      get_url:
+        url: https://dev.bukkit.org/projects/grief-prevention/files/2513026/download
+        dest: /usr/local/bukkit-plugins/GriefPrevention-16.8.jar
+    - name: 'Download LaggRemover'
+      get_url:
+        url: https://dev.bukkit.org/projects/laggremover/files/2521425/download
+        dest: /usr/local/bukkit-plugins/LaggRemover-2.0.4.jar
+    - name: 'Download EssentialsX'
+      get_url:
+        url: https://dev.bukkit.org/projects/essentialsx/files/2437748/download
+        dest: /usr/local/bukkit-plugins/EssentialsX-2.0.1-b488.jar
+
   roles:
     - role: geerlingguy.java
       when: "ansible_os_family == 'RedHat'"
@@ -18,3 +44,5 @@
         - ScorpionBuild
         - PlacHerobrine
       minecraft_server: spigot
+      minecraft_hook_after_install: '/etc/ansible/add-plugins.yml'
+
