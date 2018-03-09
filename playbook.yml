@@ -2,15 +2,17 @@
 - hosts: localhost
   connection: local
   become: true
+  vars:
+    minecraft_plugin_dir: '/srv/minecraft/plugins'
 
   roles:
     - role: geerlingguy.java
       when: "ansible_os_family == 'RedHat'"
       java_packages:
         - java-1.8.0-openjdk
-        - java-1.8.0-openjdk-devel
 
     - role: devops-coop.minecraft
+      minecraft_url: https://pypi.danizen.net/minecraft
       minecraft_version: 1.12.2
       minecraft_ops:
         - danizen
@@ -19,5 +21,5 @@
         - ScorpionBuild
         - PlacHerobrine
       minecraft_server: spigot
-      minecraft_hook_after_install: '{{ playbook_dir }}/add-plugins.yml'
+      minecraft_hook_after_install: '{{ playbook_dir }}/download-plugins.yml'
 

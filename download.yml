@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    minecraft_plugin_dir: plugins
+
+  tasks:
+    - name: Download plugins
+      include: download-plugins.yml
+

@@ -2,26 +2,26 @@
 ---
 - name: Create directory for bukkit plugins
   file:
-    path: /srv/minecraft/plugins
+    path: '{{ minecraft_plugin_dir }}'
     state: directory
 - name: 'Download WorldEdit 6.1.7.3'
   get_url:
     url: https://dev.bukkit.org/projects/worldedit/files/2460562/download
-    dest: /srv/minecraft/plugins/worldedit-6.1.7.3.jar
+    dest: '{{ minecraft_plugin_dir }}/worldedit-6.1.7.3.jar'
 - name: 'Download DynMap 2.5'
   get_url:
     url: https://dev.bukkit.org/projects/dynmap/files/2431572/download
-    dest: /srv/minecraft/plugins/dynmap-2.5.jar
-- name: 'Download Grief Prevention'
+    dest: '{{ minecraft_plugin_dir }}/dynmap-2.5.jar'
+- name: 'Download Grief Prevention 16.8'
   get_url:
     url: https://dev.bukkit.org/projects/grief-prevention/files/2513026/download
-    dest: /srv/minecraft/plugins/GriefPrevention-16.8.jar
-- name: 'Download LaggRemover'
+    dest: '{{ minecraft_plugin_dir }}/GriefPrevention-16.8.jar'
+- name: 'Download LaggRemover 2.0.4'
   get_url:
     url: https://dev.bukkit.org/projects/laggremover/files/2521425/download
-    dest: /srv/minecraft/plugins/LaggRemover-2.0.4.jar
-- name: 'Download EssentialsX'
+    dest: '{{ minecraft_plugin_dir }}/LaggRemover-2.0.4.jar'
+- name: 'Download EssentialsX 2.0.1'
   get_url:
     url: https://dev.bukkit.org/projects/essentialsx/files/2437748/download
-    dest: /srv/minecraft/plugins/EssentialsX-2.0.1-b488.jar
+    dest: '{{ minecraft_plugin_dir }}/EssentialsX-2.0.1-b488.jar'
 
