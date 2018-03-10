@@ -36,27 +36,19 @@
     dest: '{{ minecraft_home }}/plugins/WorldEdit.jar'
     owner: '{{ minecraft_user }}'
     group: '{{ minecraft_group }}'
-- name: 'Download Essentials 2.13.1'
+- name: 'Download EssentialsX 2.0.1'
   get_url:
-    url: https://dev.bukkit.org/projects/essentials/files/780922/download
-    dest: '{{ minecraft_home }}/Essentials.zip'
+    url: 'https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/{{ item.path }}/target/{{ item.jar }}-2.0.1.jar'
+    dest: '{{ minecraft_home }}/plugins/{{ item.jar }}.jar'
     owner: '{{ minecraft_user }}'
     group: '{{ minecraft_group }}'
-- name: 'Expand essentials'
-  unarchive:
-    src: '{{ minecraft_home }}/Essentials.zip'
-    remote_src: true
-    owner: '{{ minecraft_user }}'
-    group: '{{ minecraft_group }}'
-    dest: '{{ minecraft_home }}/plugins'
-    creates: '{{ minecraft_home }}/plugins/Essentials.jar'
-- name: 'Remove EssentialsAntibuild'
-  file:
-    path: '{{ minecraft_home }}/plugins/{{ item }}'
-    state: absent
   with_items:
-    - EssentialsAntiBuild.jar
-    - EssentialsProtect.jar
+    - path: Essentials
+      jar: EssentialsX
+    - path: EssentialsChat
+      jar: EssentialsXChat
+    - path: EssentialsSpawn
+      jar: EssentialsXSpawn
 - name: 'Download PermissionsEx 1.23.4'
   get_url:
     url: https://dev.bukkit.org/projects/permissionsex/files/909154/download
