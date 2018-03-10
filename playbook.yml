@@ -21,5 +21,7 @@
         - ScorpionBuild
         - PlacHerobrine
       minecraft_server: spigot
+      minecraft_server_properties:
+        'level-seed': -4829013407982591683
       minecraft_hook_before_start: '{{ playbook_dir }}/download-plugins.yml'
 
