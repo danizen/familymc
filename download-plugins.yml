@@ -2,26 +2,76 @@
 ---
 - name: Create directory for bukkit plugins
   file:
-    path: '{{ minecraft_plugin_dir }}'
+    path: '{{ minecraft_home }}/plugins'
     state: directory
-- name: 'Download WorldEdit 6.1.7.3'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
+- name: 'Download Vault 1.5.6'
   get_url:
-    url: https://dev.bukkit.org/projects/worldedit/files/2460562/download
-    dest: '{{ minecraft_plugin_dir }}/worldedit-6.1.7.3.jar'
-- name: 'Download DynMap 2.5'
-  get_url:
-    url: https://dev.bukkit.org/projects/dynmap/files/2431572/download
-    dest: '{{ minecraft_plugin_dir }}/dynmap-2.5.jar'
+    url: https://dev.bukkit.org/projects/vault/files/894359/download
+    dest: '{{ minecraft_home }}/plugins/Vault.jar'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
 - name: 'Download Grief Prevention 16.8'
   get_url:
     url: https://dev.bukkit.org/projects/grief-prevention/files/2513026/download
-    dest: '{{ minecraft_plugin_dir }}/GriefPrevention-16.8.jar'
+    dest: '{{ minecraft_home }}/plugins/GriefPrevention.jar'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
 - name: 'Download LaggRemover 2.0.4'
   get_url:
     url: https://dev.bukkit.org/projects/laggremover/files/2521425/download
-    dest: '{{ minecraft_plugin_dir }}/LaggRemover-2.0.4.jar'
-- name: 'Download EssentialsX 2.0.1'
+    dest: '{{ minecraft_home }}/plugins/LaggRemover.jar'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
+- name: 'Download Multiverse-Core 2.5.0'
   get_url:
-    url: https://dev.bukkit.org/projects/essentialsx/files/2437748/download
-    dest: '{{ minecraft_plugin_dir }}/EssentialsX-2.0.1-b488.jar'
+    url: https://dev.bukkit.org/projects/multiverse-core/files/2428161/download
+    dest: '{{ minecraft_home }}/plugins/Multiverse-Core.jar'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
+- name: 'Download ChestShop 3.9.0'
+  get_url:
+    url: https://dev.bukkit.org/projects/chestshop/files/2518275/download
+    dest: '{{ minecraft_home }}/plugins/ChestShop.jar'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
+- name: 'Download WorldEdit 6.1.7.3'
+  get_url:
+    url: https://dev.bukkit.org/projects/worldedit/files/2460562/download
+    dest: '{{ minecraft_home }}/plugins/WorldEdit.jar'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
+- name: 'Download Essentials 2.13.1'
+  get_url:
+    url: https://dev.bukkit.org/projects/essentials/files/780922/download
+    dest: '{{ minecraft_home }}/Essentials.zip'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
+- name: 'Expand essentials'
+  unarchive:
+    src: '{{ minecraft_home }}/Essentials.zip'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
+    dest: '{{ minecraft_home }}/plugins'
+    creates: '{{ minecraft_home }}/plugins/Essentials.jar'
+- name: 'Remove EssentialsAntibuild'
+  file:
+    path: '{{ minecraft_home }}/plugins/{{ item }}'
+    state: absent
+  with_items:
+    - EssentialsAntiBuild.jar
+    - EssentialsProtect.jar
+- name: 'Download PermissionsEx 1.23.4'
+  get_url:
+    url: https://dev.bukkit.org/projects/permissionsex/files/909154/download
+    dest: '{{ minecraft_home }}/plugins/PermissionsEx.jar'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
+- name: 'Download AcidIsland 3.0.8.2'
+  get_url:
+    url: https://dev.bukkit.org/projects/acidisland/files/2497380/download
+    dest: '{{ minecraft_home }}/plugins/AcidIsland.jar'
+    owner: '{{ minecraft_user }}'
+    group: '{{ minecraft_group }}'
 

@@ -2,9 +2,16 @@
 - hosts: localhost
   connection: local
   vars:
-    minecraft_plugin_dir: plugins
+    minecraft_home: minecraft
+    minecraft_user: dan
+    minecraft_group: dan
 
   tasks:
+    - name: Create directory
+      file:
+        path: minecraft
+        state: directory
+
     - name: Download plugins
       include: download-plugins.yml
 
