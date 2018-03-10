@@ -21,5 +21,5 @@
         - ScorpionBuild
         - PlacHerobrine
       minecraft_server: spigot
-      minecraft_hook_after_install: '{{ playbook_dir }}/download-plugins.yml'
+      minecraft_hook_before_start: '{{ playbook_dir }}/download-plugins.yml'
 
