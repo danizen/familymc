@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: laputa.danizen.net
   become: true
   vars:
     minecraft_plugin_dir: '/srv/minecraft/plugins'
