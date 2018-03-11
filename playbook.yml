@@ -1,8 +1,15 @@
 ---
-- hosts: laputa.danizen.net
+- hosts: '{{ var_hosts | default("laputa.danizen.net") }}'
   become: true
   vars:
     minecraft_plugin_dir: '/srv/minecraft/plugins'
+
+  pre_tasks:
+    - name: Add the epel-release on CentOS
+      when: "ansible_os_family == 'RedHat'"
+      yum:
+        name: epel-release
+        state: latest
 
   roles:
     - role: geerlingguy.java

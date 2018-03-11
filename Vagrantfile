@@ -54,7 +54,10 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "/vagrant/playbook.yml"
     ansible.inventory_path = "/etc/ansible/hosts"
     ansible.verbose = true
-    ansible.install = true
+    ansible.raw_arguments = [
+      '--extra-vars "var_hosts=localhost"',
+      '-c local',
+    ]
   end
 end
 
